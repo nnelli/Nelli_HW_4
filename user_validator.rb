@@ -64,7 +64,61 @@ class UserValidator
 
     bad_phones = check_phone
 
-    "Users #{bad_joins} have incorrect joined dates, users #{bad_emails} did not enter correct emails, and users #{bad_phones} did not enter valid phone numbers."
+    bad_passwords = check_password
+
+    "Users #{bad_joins} have incorrect joined dates, users #{bad_emails} did not enter correct emails, users #{bad_phones} did not enter valid phone numbers, and users #{bad_passwords} have bad passwords."
+  end
+
+  def check_password
+    passwords = @data['password']
+    bad_passwords = []
+    word_count = 0
+    word_limit = passwords.count
+    while word_count < word_limit do
+      char_count = 0
+      char_limit = passwords[word_count].length
+      lower_count = 0
+      upper_count = 0
+      number_count = 0
+      special_count = 0
+      appear_in_pw = 0
+      while char_count < char_limit do
+        if passwords[word_count][char_count].match(/[a-z]/)
+          lower_count += 1
+        elsif passwords[word_count][char_count].match(/[A-Z]/)
+          upper_count +=1
+        elsif passwords[word_count][char_count].match(/\d/)
+          number_count += 1
+        elsif passwords[word_count][char_count].match(/(\W|_)/)
+          special_count +=1
+        end
+        char_count += 1
+      end
+
+      if lower_count > 0
+        appear_in_pw += 1
+      end
+
+      if upper_count > 0
+        appear_in_pw += 1
+      end
+
+      if number_count > 0
+        appear_in_pw += 1
+      end
+
+      if special_count > 0
+        appear_in_pw += 1
+      end
+
+
+
+      unless char_limit >= 6 and appear_in_pw >= 3
+        bad_passwords << word_count
+      end
+    word_count += 1
+    end
+    bad_passwords
   end
 
 end
