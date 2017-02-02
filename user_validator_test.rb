@@ -23,7 +23,7 @@ class UserValidatorTest < Minitest::Test
   def test_phone
     user = UserValidator.new('homework.csv')
     bad_phone = user.check_phone
-    assert bad_emails == [0,4,6]
+    assert bad_phone == [0,4,6]
   end
 
 end

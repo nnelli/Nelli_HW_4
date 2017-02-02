@@ -17,6 +17,7 @@ class UserValidator
         count += 1
       else
       bad_rows << count
+      count += 1
       end
     end
 
@@ -34,6 +35,7 @@ class UserValidator
         count += 1
       else
         bad_rows << count
+        count += 1
       end
     end
     bad_rows
@@ -50,9 +52,9 @@ class UserValidator
         count += 1
       elsif
         bad_rows << count
+        count += 1
       end
     end
-
     bad_rows
   end
 
