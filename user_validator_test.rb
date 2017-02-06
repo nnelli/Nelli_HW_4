@@ -35,7 +35,7 @@ class UserValidatorTest < Minitest::Test
   def test_validity
     user = UserValidator.new('homework.csv')
     test_valid = user.check_validity
-    assert_equal "Users [1, 3, 4, 6] have incorrect joined dates, users [1, 2] did not enter correct emails, users [0, 2, 4, 6] did not enter valid phone numbers, and users [0, 1, 2, 6] have bad passwords.", test_valid
+    assert_equal "4 users [1, 3, 4, 6] have incorrect joined dates, 2 users [1, 2] did not enter correct emails, 4 users [0, 2, 4, 6] did not enter valid phone numbers, and 4 users [0, 1, 2, 6] have bad passwords.", test_valid
   end
 
 end

@@ -66,7 +66,7 @@ class UserValidator
 
     bad_passwords = check_password
 
-    "Users #{bad_joins} have incorrect joined dates, users #{bad_emails} did not enter correct emails, users #{bad_phones} did not enter valid phone numbers, and users #{bad_passwords} have bad passwords."
+    "#{bad_joins.count} users #{bad_joins} have incorrect joined dates, #{bad_emails.count} users #{bad_emails} did not enter correct emails, #{bad_phones.count} users #{bad_phones} did not enter valid phone numbers, and #{bad_passwords.count} users #{bad_passwords} have bad passwords."
   end
 
   def check_password
